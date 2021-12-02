@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:meta/meta.dart' show visibleForTesting;
 import 'package:pip_flutter/pipflutter_player_buffering_configuration.dart';
 import 'method_channel_video_player.dart';
 

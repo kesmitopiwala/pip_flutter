@@ -41,8 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: InkWell(
-          onTap:(){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => PictureInPicturePage()));
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => PictureInPicturePage()));
           },
           child: const Padding(
             padding: EdgeInsets.symmetric(vertical: 8),
@@ -68,11 +69,10 @@ class _PictureInPicturePageState extends State<PictureInPicturePage> {
   late PipFlutterPlayerController pipFlutterPlayerController;
   final GlobalKey pipFlutterPlayerKey = GlobalKey();
 
-
   @override
   void initState() {
     PipFlutterPlayerConfiguration pipFlutterPlayerConfiguration =
-    const PipFlutterPlayerConfiguration(
+        const PipFlutterPlayerConfiguration(
       aspectRatio: 16 / 9,
       fit: BoxFit.contain,
     );
@@ -80,9 +80,11 @@ class _PictureInPicturePageState extends State<PictureInPicturePage> {
       PipFlutterPlayerDataSourceType.network,
       'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     );
-    pipFlutterPlayerController = PipFlutterPlayerController(pipFlutterPlayerConfiguration);
+    pipFlutterPlayerController =
+        PipFlutterPlayerController(pipFlutterPlayerConfiguration);
     pipFlutterPlayerController.setupDataSource(dataSource);
-    pipFlutterPlayerController.setPipFlutterPlayerGlobalKey(pipFlutterPlayerKey);
+    pipFlutterPlayerController
+        .setPipFlutterPlayerGlobalKey(pipFlutterPlayerKey);
     super.initState();
   }
 
@@ -114,7 +116,8 @@ class _PictureInPicturePageState extends State<PictureInPicturePage> {
           ElevatedButton(
             child: const Text("Show PiP"),
             onPressed: () {
-              pipFlutterPlayerController.enablePictureInPicture(pipFlutterPlayerKey);
+              pipFlutterPlayerController
+                  .enablePictureInPicture(pipFlutterPlayerKey);
             },
           ),
           ElevatedButton(

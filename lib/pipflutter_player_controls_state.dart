@@ -23,7 +23,8 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
 
   PipFlutterPlayerController? get pipFlutterPlayerController;
 
-  PipFlutterPlayerControlsConfiguration get pipFlutterPlayerControlsConfiguration;
+  PipFlutterPlayerControlsConfiguration
+      get pipFlutterPlayerControlsConfiguration;
 
   VideoPlayerValue? get latestValue;
 
@@ -62,7 +63,8 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
                   milliseconds: pipFlutterPlayerControlsConfiguration
                       .forwardSkipTimeInMilliseconds))
           .inMilliseconds;
-      pipFlutterPlayerController!.seekTo(Duration(milliseconds: min(skip, end)));
+      pipFlutterPlayerController!
+          .seekTo(Duration(milliseconds: min(skip, end)));
     }
   }
 
@@ -107,7 +109,8 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
               }),
             if (pipFlutterPlayerControlsConfiguration
                 .overflowMenuCustomItems.isNotEmpty)
-              ...pipFlutterPlayerControlsConfiguration.overflowMenuCustomItems.map(
+              ...pipFlutterPlayerControlsConfiguration.overflowMenuCustomItems
+                  .map(
                 (customItem) => _buildMoreOptionsListRow(
                   customItem.icon,
                   customItem.title,
@@ -134,7 +137,8 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
             const SizedBox(width: 8),
             Icon(
               icon,
-              color: pipFlutterPlayerControlsConfiguration.overflowMenuIconsColor,
+              color:
+                  pipFlutterPlayerControlsConfiguration.overflowMenuIconsColor,
             ),
             const SizedBox(width: 16),
             Text(
@@ -178,8 +182,8 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
                 visible: isSelected,
                 child: Icon(
                   Icons.check_outlined,
-                  color:
-                      pipFlutterPlayerControlsConfiguration.overflowModalTextColor,
+                  color: pipFlutterPlayerControlsConfiguration
+                      .overflowModalTextColor,
                 )),
             const SizedBox(width: 16),
             Text(
@@ -220,10 +224,10 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
   }
 
   void _showSubtitlesSelectionWidget() {
-    final subtitles =
-        List.of(pipFlutterPlayerController!.pipFlutterPlayerSubtitlesSourceList);
-    final noneSubtitlesElementExists = subtitles.firstWhereOrNull(
-            (source) => source.type == PipFlutterPlayerSubtitlesSourceType.none) !=
+    final subtitles = List.of(
+        pipFlutterPlayerController!.pipFlutterPlayerSubtitlesSourceList);
+    final noneSubtitlesElementExists = subtitles.firstWhereOrNull((source) =>
+            source.type == PipFlutterPlayerSubtitlesSourceType.none) !=
         null;
     if (!noneSubtitlesElementExists) {
       subtitles.add(PipFlutterPlayerSubtitlesSource(
@@ -234,7 +238,8 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
         subtitles.map((source) => _buildSubtitlesSourceRow(source)).toList());
   }
 
-  Widget _buildSubtitlesSourceRow(PipFlutterPlayerSubtitlesSource subtitlesSource) {
+  Widget _buildSubtitlesSourceRow(
+      PipFlutterPlayerSubtitlesSource subtitlesSource) {
     final selectedSourceType =
         pipFlutterPlayerController!.pipFlutterPlayerSubtitlesSource;
     final bool isSelected = (subtitlesSource == selectedSourceType) ||
@@ -255,8 +260,8 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
                 visible: isSelected,
                 child: Icon(
                   Icons.check_outlined,
-                  color:
-                      pipFlutterPlayerControlsConfiguration.overflowModalTextColor,
+                  color: pipFlutterPlayerControlsConfiguration
+                      .overflowModalTextColor,
                 )),
             const SizedBox(width: 16),
             Text(
@@ -277,8 +282,9 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
   ///Resolution selection is used for normal videos
   void _showQualitiesSelectionWidget() {
     // HLS / DASH
-    final List<String> asmsTrackNames =
-        pipFlutterPlayerController!.pipFlutterPlayerDataSource!.asmsTrackNames ?? [];
+    final List<String> asmsTrackNames = pipFlutterPlayerController!
+            .pipFlutterPlayerDataSource!.asmsTrackNames ??
+        [];
     final List<PipFlutterPlayerAsmsTrack> asmsTracks =
         pipFlutterPlayerController!.pipFlutterPlayerAsmsTracks;
     final List<Widget> children = [];
@@ -312,7 +318,8 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
     _showModalBottomSheet(children);
   }
 
-  Widget _buildTrackRow(PipFlutterPlayerAsmsTrack track, String? preferredName) {
+  Widget _buildTrackRow(
+      PipFlutterPlayerAsmsTrack track, String? preferredName) {
     final int width = track.width ?? 0;
     final int height = track.height ?? 0;
     final int bitrate = track.bitrate ?? 0;
@@ -338,8 +345,8 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
                 visible: isSelected,
                 child: Icon(
                   Icons.check_outlined,
-                  color:
-                      pipFlutterPlayerControlsConfiguration.overflowModalTextColor,
+                  color: pipFlutterPlayerControlsConfiguration
+                      .overflowModalTextColor,
                 )),
             const SizedBox(width: 16),
             Text(
@@ -369,8 +376,8 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
                 visible: isSelected,
                 child: Icon(
                   Icons.check_outlined,
-                  color:
-                      pipFlutterPlayerControlsConfiguration.overflowModalTextColor,
+                  color: pipFlutterPlayerControlsConfiguration
+                      .overflowModalTextColor,
                 )),
             const SizedBox(width: 16),
             Text(
@@ -428,8 +435,8 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
                 visible: isSelected,
                 child: Icon(
                   Icons.check_outlined,
-                  color:
-                      pipFlutterPlayerControlsConfiguration.overflowModalTextColor,
+                  color: pipFlutterPlayerControlsConfiguration
+                      .overflowModalTextColor,
                 )),
             const SizedBox(width: 16),
             Text(
@@ -462,9 +469,9 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
     showCupertinoModalPopup<void>(
       barrierColor: Colors.transparent,
       context: context,
-      useRootNavigator:
-          pipFlutterPlayerController?.pipFlutterPlayerConfiguration.useRootNavigator ??
-              false,
+      useRootNavigator: pipFlutterPlayerController
+              ?.pipFlutterPlayerConfiguration.useRootNavigator ??
+          false,
       builder: (context) {
         return SafeArea(
           top: false,
@@ -493,9 +500,9 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
     showModalBottomSheet<void>(
       backgroundColor: Colors.transparent,
       context: context,
-      useRootNavigator:
-          pipFlutterPlayerController?.pipFlutterPlayerConfiguration.useRootNavigator ??
-              false,
+      useRootNavigator: pipFlutterPlayerController
+              ?.pipFlutterPlayerConfiguration.useRootNavigator ??
+          false,
       builder: (context) {
         return SafeArea(
           top: false,
@@ -529,8 +536,8 @@ abstract class PipFlutterPlayerControlsState<T extends StatefulWidget>
   void changePlayerControlsNotVisible(bool notVisible) {
     setState(() {
       if (notVisible) {
-        pipFlutterPlayerController?.postEvent(
-            PipFlutterPlayerEvent(PipFlutterPlayerEventType.controlsHiddenStart));
+        pipFlutterPlayerController?.postEvent(PipFlutterPlayerEvent(
+            PipFlutterPlayerEventType.controlsHiddenStart));
       }
       controlsNotVisible = notVisible;
     });

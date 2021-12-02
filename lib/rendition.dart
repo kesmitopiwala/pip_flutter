@@ -1,5 +1,3 @@
-
-
 import 'package:pip_flutter/format.dart';
 
 class Rendition {

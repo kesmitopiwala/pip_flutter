@@ -50,11 +50,12 @@ class _PipFlutterPlayerMaterialControlsState
   VideoPlayerValue? get latestValue => _latestValue;
 
   @override
-  PipFlutterPlayerController? get pipFlutterPlayerController => _pipFlutterPlayerController;
+  PipFlutterPlayerController? get pipFlutterPlayerController =>
+      _pipFlutterPlayerController;
 
   @override
-  PipFlutterPlayerControlsConfiguration get pipFlutterPlayerControlsConfiguration =>
-      _controlsConfiguration;
+  PipFlutterPlayerControlsConfiguration
+      get pipFlutterPlayerControlsConfiguration => _controlsConfiguration;
 
   @override
   Widget build(BuildContext context) {
@@ -81,13 +82,17 @@ class _PipFlutterPlayerMaterialControlsState
       },
       onDoubleTap: () {
         if (PipFlutterPlayerMultipleGestureDetector.of(context) != null) {
-          PipFlutterPlayerMultipleGestureDetector.of(context)!.onDoubleTap?.call();
+          PipFlutterPlayerMultipleGestureDetector.of(context)!
+              .onDoubleTap
+              ?.call();
         }
         cancelAndRestartTimer();
       },
       onLongPress: () {
         if (PipFlutterPlayerMultipleGestureDetector.of(context) != null) {
-          PipFlutterPlayerMultipleGestureDetector.of(context)!.onLongPress?.call();
+          PipFlutterPlayerMultipleGestureDetector.of(context)!
+              .onLongPress
+              ?.call();
         }
       },
       child: AbsorbPointer(

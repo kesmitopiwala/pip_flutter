@@ -148,7 +148,8 @@ class PipFlutterPlayerConfiguration {
     ],
     this.routePageBuilder,
     this.eventListener,
-    this.subtitlesConfiguration = const PipFlutterPlayerSubtitlesConfiguration(),
+    this.subtitlesConfiguration =
+        const PipFlutterPlayerSubtitlesConfiguration(),
     this.controlsConfiguration = const PipFlutterPlayerControlsConfiguration(),
     this.fit = BoxFit.fill,
     this.rotation = 0,

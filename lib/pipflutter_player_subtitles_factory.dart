@@ -37,7 +37,8 @@ class PipFlutterPlayerSubtitlesFactory {
       }
       return subtitles;
     } catch (exception) {
-      PipFlutterPlayerUtils.log("Failed to read subtitles from file: $exception");
+      PipFlutterPlayerUtils.log(
+          "Failed to read subtitles from file: $exception");
     }
     return [];
   }
@@ -76,7 +77,8 @@ class PipFlutterPlayerSubtitlesFactory {
     try {
       return _parseString(source.content!);
     } catch (exception) {
-      PipFlutterPlayerUtils.log("Failed to read subtitles from memory: $exception");
+      PipFlutterPlayerUtils.log(
+          "Failed to read subtitles from memory: $exception");
     }
     return [];
   }

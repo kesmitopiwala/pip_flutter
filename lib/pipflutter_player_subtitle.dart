@@ -1,5 +1,3 @@
-
-
 import 'package:pip_flutter/pipflutter_player_utils.dart';
 
 class PipFlutterPlayerSubtitle {

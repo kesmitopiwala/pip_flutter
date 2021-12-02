@@ -16,14 +16,16 @@ import 'package:pip_flutter/video_player.dart';
 class PipFlutterPlayerWithControls extends StatefulWidget {
   final PipFlutterPlayerController? controller;
 
-  const PipFlutterPlayerWithControls({Key? key, this.controller}) : super(key: key);
+  const PipFlutterPlayerWithControls({Key? key, this.controller})
+      : super(key: key);
 
   @override
   _PipFlutterPlayerWithControlsState createState() =>
       _PipFlutterPlayerWithControlsState();
 }
 
-class _PipFlutterPlayerWithControlsState extends State<PipFlutterPlayerWithControls> {
+class _PipFlutterPlayerWithControlsState
+    extends State<PipFlutterPlayerWithControls> {
   PipFlutterPlayerSubtitlesConfiguration get subtitlesConfiguration =>
       widget.controller!.pipFlutterPlayerConfiguration.subtitlesConfiguration;
 
@@ -81,9 +83,9 @@ class _PipFlutterPlayerWithControlsState extends State<PipFlutterPlayerWithContr
               .autoDetectFullscreenDeviceOrientation ||
           pipFlutterPlayerController
               .pipFlutterPlayerConfiguration.autoDetectFullscreenAspectRatio) {
-        aspectRatio =
-            pipFlutterPlayerController.videoPlayerController?.value.aspectRatio ??
-                1.0;
+        aspectRatio = pipFlutterPlayerController
+                .videoPlayerController?.value.aspectRatio ??
+            1.0;
       } else {
         aspectRatio = pipFlutterPlayerController
                 .pipFlutterPlayerConfiguration.fullScreenAspectRatio ??
@@ -112,12 +114,15 @@ class _PipFlutterPlayerWithControlsState extends State<PipFlutterPlayerWithContr
   }
 
   Container _buildPlayerWithControls(
-      PipFlutterPlayerController pipFlutterPlayerController, BuildContext context) {
-    final configuration = pipFlutterPlayerController.pipFlutterPlayerConfiguration;
+      PipFlutterPlayerController pipFlutterPlayerController,
+      BuildContext context) {
+    final configuration =
+        pipFlutterPlayerController.pipFlutterPlayerConfiguration;
     var rotation = configuration.rotation;
 
     if (!(rotation <= 360 && rotation % 90 == 0)) {
-      PipFlutterPlayerUtils.log("Invalid rotation provided. Using rotation = 0");
+      PipFlutterPlayerUtils.log(
+          "Invalid rotation provided. Using rotation = 0");
       rotation = 0;
     }
     if (pipFlutterPlayerController.pipFlutterPlayerDataSource == null) {
@@ -125,8 +130,8 @@ class _PipFlutterPlayerWithControlsState extends State<PipFlutterPlayerWithContr
     }
     _initialized = true;
 
-    final bool placeholderOnTop =
-        pipFlutterPlayerController.pipFlutterPlayerConfiguration.placeholderOnTop;
+    final bool placeholderOnTop = pipFlutterPlayerController
+        .pipFlutterPlayerConfiguration.placeholderOnTop;
     // ignore: avoid_unnecessary_containers
     return Container(
       child: Stack(
@@ -155,7 +160,8 @@ class _PipFlutterPlayerWithControlsState extends State<PipFlutterPlayerWithContr
     );
   }
 
-  Widget _buildPlaceholder(PipFlutterPlayerController pipFlutterPlayerController) {
+  Widget _buildPlaceholder(
+      PipFlutterPlayerController pipFlutterPlayerController) {
     return pipFlutterPlayerController.pipFlutterPlayerDataSource!.placeholder ??
         pipFlutterPlayerController.pipFlutterPlayerConfiguration.placeholder ??
         Container();
@@ -253,7 +259,8 @@ class _PipFlutterPlayerVideoFitWidgetState
   @override
   void didUpdateWidget(_PipFlutterPlayerVideoFitWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.pipFlutterPlayerController.videoPlayerController != controller) {
+    if (oldWidget.pipFlutterPlayerController.videoPlayerController !=
+        controller) {
       if (_initializedListener != null) {
         oldWidget.pipFlutterPlayerController.videoPlayerController!
             .removeListener(_initializedListener!);

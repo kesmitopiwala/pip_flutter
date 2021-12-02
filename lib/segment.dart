@@ -1,5 +1,3 @@
-
-
 import 'package:pip_flutter/drm_init_data.dart';
 
 class Segment {

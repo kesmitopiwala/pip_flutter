@@ -43,7 +43,8 @@ class PipFlutterPlayerController {
   final PipFlutterPlayerConfiguration pipFlutterPlayerConfiguration;
 
   ///Playlist configuration used in controller instance.
-  final PipFlutterPlayerPlaylistConfiguration? pipFlutterPlayerPlaylistConfiguration;
+  final PipFlutterPlayerPlaylistConfiguration?
+      pipFlutterPlayerPlaylistConfiguration;
 
   ///List of event listeners, which listen to events.
   final List<Function(PipFlutterPlayerEvent)?> _eventListeners = [];
@@ -80,14 +81,17 @@ class PipFlutterPlayerController {
   PipFlutterPlayerDataSource? _pipFlutterPlayerDataSource;
 
   ///Currently used data source in player.
-  PipFlutterPlayerDataSource? get pipFlutterPlayerDataSource => _pipFlutterPlayerDataSource;
+  PipFlutterPlayerDataSource? get pipFlutterPlayerDataSource =>
+      _pipFlutterPlayerDataSource;
 
   ///List of PipFlutterPlayerSubtitlesSources.
-  final List<PipFlutterPlayerSubtitlesSource> _pipFlutterPlayerSubtitlesSourceList = [];
+  final List<PipFlutterPlayerSubtitlesSource>
+      _pipFlutterPlayerSubtitlesSourceList = [];
 
   ///List of PipFlutterPlayerSubtitlesSources.
-  List<PipFlutterPlayerSubtitlesSource> get pipFlutterPlayerSubtitlesSourceList =>
-      _pipFlutterPlayerSubtitlesSourceList;
+  List<PipFlutterPlayerSubtitlesSource>
+      get pipFlutterPlayerSubtitlesSourceList =>
+          _pipFlutterPlayerSubtitlesSourceList;
   PipFlutterPlayerSubtitlesSource? _pipFlutterPlayerSubtitlesSource;
 
   ///Currently used subtitles source.
@@ -108,7 +112,8 @@ class PipFlutterPlayerController {
   PipFlutterPlayerAsmsTrack? _pipFlutterPlayerAsmsTrack;
 
   ///Currently selected player track. Used only for HLS / DASH.
-  PipFlutterPlayerAsmsTrack? get pipFlutterPlayerAsmsTrack => _pipFlutterPlayerAsmsTrack;
+  PipFlutterPlayerAsmsTrack? get pipFlutterPlayerAsmsTrack =>
+      _pipFlutterPlayerAsmsTrack;
 
   ///Timer for next video. Used in playlist.
   Timer? _nextVideoTimer;
@@ -230,14 +235,16 @@ class PipFlutterPlayerController {
 
   ///Get PipFlutterPlayerController from context. Used in InheritedWidget.
   static PipFlutterPlayerController of(BuildContext context) {
-    final pipFlutterPLayerControllerProvider = context
-        .dependOnInheritedWidgetOfExactType<PipFlutterPlayerControllerProvider>()!;
+    final pipFlutterPLayerControllerProvider =
+        context.dependOnInheritedWidgetOfExactType<
+            PipFlutterPlayerControllerProvider>()!;
 
     return pipFlutterPLayerControllerProvider.controller;
   }
 
   ///Setup new data source in PipFlutter Player.
-  Future setupDataSource(PipFlutterPlayerDataSource pipFlutterPlayerDataSource) async {
+  Future setupDataSource(
+      PipFlutterPlayerDataSource pipFlutterPlayerDataSource) async {
     postEvent(PipFlutterPlayerEvent(PipFlutterPlayerEventType.setupDataSource,
         parameters: <String, dynamic>{
           _dataSourceParameter: pipFlutterPlayerDataSource,
@@ -260,7 +267,8 @@ class PipFlutterPlayerController {
     pipFlutterPlayerAsmsTracks.clear();
 
     ///Setup subtitles
-    final List<PipFlutterPlayerSubtitlesSource>? pipFlutterPlayerSubtitlesSourceList =
+    final List<PipFlutterPlayerSubtitlesSource>?
+        pipFlutterPlayerSubtitlesSourceList =
         pipFlutterPlayerDataSource.subtitles;
     if (pipFlutterPlayerSubtitlesSourceList != null) {
       _pipFlutterPlayerSubtitlesSourceList
@@ -283,7 +291,8 @@ class PipFlutterPlayerController {
   ///Configure subtitles based on subtitles source.
   void _setupSubtitles() {
     _pipFlutterPlayerSubtitlesSourceList.add(
-      PipFlutterPlayerSubtitlesSource(type: PipFlutterPlayerSubtitlesSourceType.none),
+      PipFlutterPlayerSubtitlesSource(
+          type: PipFlutterPlayerSubtitlesSourceType.none),
     );
     final defaultSubtitle = _pipFlutterPlayerSubtitlesSourceList
         .firstWhereOrNull((element) => element.selectedByDefault == true);
@@ -295,11 +304,16 @@ class PipFlutterPlayerController {
   }
 
   ///Check if given [pipFlutterPlayerDataSource] is HLS / DASH-type data source.
-  bool _isDataSourceAsms(PipFlutterPlayerDataSource pipFlutterPlayerDataSource) =>
-      (PipFlutterPlayerAsmsUtils.isDataSourceHls(pipFlutterPlayerDataSource.url) ||
-          pipFlutterPlayerDataSource.videoFormat == PipFlutterPlayerVideoFormat.hls) ||
-      (PipFlutterPlayerAsmsUtils.isDataSourceDash(pipFlutterPlayerDataSource.url) ||
-          pipFlutterPlayerDataSource.videoFormat == PipFlutterPlayerVideoFormat.dash);
+  bool _isDataSourceAsms(
+          PipFlutterPlayerDataSource pipFlutterPlayerDataSource) =>
+      (PipFlutterPlayerAsmsUtils.isDataSourceHls(
+              pipFlutterPlayerDataSource.url) ||
+          pipFlutterPlayerDataSource.videoFormat ==
+              PipFlutterPlayerVideoFormat.hls) ||
+      (PipFlutterPlayerAsmsUtils.isDataSourceDash(
+              pipFlutterPlayerDataSource.url) ||
+          pipFlutterPlayerDataSource.videoFormat ==
+              PipFlutterPlayerVideoFormat.dash);
 
   ///Configure HLS / DASH data source based on provided data source and configuration.
   ///This method configures tracks, subtitles and audio tracks from given
@@ -311,7 +325,8 @@ class PipFlutterPlayerController {
     );
     if (data != null) {
       final PipFlutterPlayerAsmsDataHolder _response =
-          await PipFlutterPlayerAsmsUtils.parse(data, pipFlutterPlayerDataSource!.url);
+          await PipFlutterPlayerAsmsUtils.parse(
+              data, pipFlutterPlayerDataSource!.url);
 
       /// Load tracks
       if (_pipFlutterPlayerDataSource?.useAsmsTracks == true) {
@@ -351,7 +366,8 @@ class PipFlutterPlayerController {
   ///Setup subtitles to be displayed from given subtitle source.
   ///If subtitles source is segmented then don't load videos at start. Videos
   ///will load with just in time policy.
-  Future<void> setupSubtitleSource(PipFlutterPlayerSubtitlesSource subtitlesSource,
+  Future<void> setupSubtitleSource(
+      PipFlutterPlayerSubtitlesSource subtitlesSource,
       {bool sourceInitialize = false}) async {
     _pipFlutterPlayerSubtitlesSource = subtitlesSource;
     subtitlesLines.clear();
@@ -363,11 +379,13 @@ class PipFlutterPlayerController {
         return;
       }
       final subtitlesParsed =
-          await PipFlutterPlayerSubtitlesFactory.parseSubtitles(subtitlesSource);
+          await PipFlutterPlayerSubtitlesFactory.parseSubtitles(
+              subtitlesSource);
       subtitlesLines.addAll(subtitlesParsed);
     }
 
-    _postEvent(PipFlutterPlayerEvent(PipFlutterPlayerEventType.changedSubtitles));
+    _postEvent(
+        PipFlutterPlayerEvent(PipFlutterPlayerEventType.changedSubtitles));
     if (!_disposed && !sourceInitialize) {
       _postControllerEvent(PipFlutterPlayerControllerEvent.changeSubtitles);
     }
@@ -386,7 +404,8 @@ class PipFlutterPlayerController {
         return;
       }
       _asmsSegmentsLoading = true;
-      final PipFlutterPlayerSubtitlesSource? source = _pipFlutterPlayerSubtitlesSource;
+      final PipFlutterPlayerSubtitlesSource? source =
+          _pipFlutterPlayerSubtitlesSource;
       final Duration loadDurationEnd = Duration(
           milliseconds: position.inMilliseconds +
               5 * (_pipFlutterPlayerSubtitlesSource?.asmsSegmentsTime ?? 5000));
@@ -419,7 +438,8 @@ class PipFlutterPlayerController {
       }
       _asmsSegmentsLoading = false;
     } catch (exception) {
-      PipFlutterPlayerUtils.log("Load ASMS subtitle segments failed: $exception");
+      PipFlutterPlayerUtils.log(
+          "Load ASMS subtitle segments failed: $exception");
     }
   }
 
@@ -443,24 +463,27 @@ class PipFlutterPlayerController {
   }
 
   ///Internal method which invokes videoPlayerController source setup.
-  Future _setupDataSource(PipFlutterPlayerDataSource pipFlutterPlayerDataSource) async {
+  Future _setupDataSource(
+      PipFlutterPlayerDataSource pipFlutterPlayerDataSource) async {
     switch (pipFlutterPlayerDataSource.type) {
       case PipFlutterPlayerDataSourceType.network:
         await videoPlayerController?.setNetworkDataSource(
           pipFlutterPlayerDataSource.url,
           headers: _getHeaders(),
-          useCache:
-              _pipFlutterPlayerDataSource!.cacheConfiguration?.useCache ?? false,
+          useCache: _pipFlutterPlayerDataSource!.cacheConfiguration?.useCache ??
+              false,
           maxCacheSize:
-              _pipFlutterPlayerDataSource!.cacheConfiguration?.maxCacheSize ?? 0,
-          maxCacheFileSize:
-              _pipFlutterPlayerDataSource!.cacheConfiguration?.maxCacheFileSize ??
+              _pipFlutterPlayerDataSource!.cacheConfiguration?.maxCacheSize ??
                   0,
+          maxCacheFileSize: _pipFlutterPlayerDataSource!
+                  .cacheConfiguration?.maxCacheFileSize ??
+              0,
           cacheKey: _pipFlutterPlayerDataSource?.cacheConfiguration?.key,
           showNotification: _pipFlutterPlayerDataSource
               ?.notificationConfiguration?.showNotification,
           title: _pipFlutterPlayerDataSource?.notificationConfiguration?.title,
-          author: _pipFlutterPlayerDataSource?.notificationConfiguration?.author,
+          author:
+              _pipFlutterPlayerDataSource?.notificationConfiguration?.author,
           imageUrl:
               _pipFlutterPlayerDataSource?.notificationConfiguration?.imageUrl,
           notificationChannelName: _pipFlutterPlayerDataSource
@@ -471,8 +494,8 @@ class PipFlutterPlayerController {
           certificateUrl:
               _pipFlutterPlayerDataSource?.drmConfiguration?.certificateUrl,
           drmHeaders: _pipFlutterPlayerDataSource?.drmConfiguration?.headers,
-          activityName:
-              _pipFlutterPlayerDataSource?.notificationConfiguration?.activityName,
+          activityName: _pipFlutterPlayerDataSource
+              ?.notificationConfiguration?.activityName,
           clearKey: _pipFlutterPlayerDataSource?.drmConfiguration?.clearKey,
           videoExtension: _pipFlutterPlayerDataSource!.videoExtension,
         );
@@ -491,10 +514,12 @@ class PipFlutterPlayerController {
             File(pipFlutterPlayerDataSource.url),
             showNotification: _pipFlutterPlayerDataSource
                 ?.notificationConfiguration?.showNotification,
-            title: _pipFlutterPlayerDataSource?.notificationConfiguration?.title,
-            author: _pipFlutterPlayerDataSource?.notificationConfiguration?.author,
-            imageUrl:
-                _pipFlutterPlayerDataSource?.notificationConfiguration?.imageUrl,
+            title:
+                _pipFlutterPlayerDataSource?.notificationConfiguration?.title,
+            author:
+                _pipFlutterPlayerDataSource?.notificationConfiguration?.author,
+            imageUrl: _pipFlutterPlayerDataSource
+                ?.notificationConfiguration?.imageUrl,
             notificationChannelName: _pipFlutterPlayerDataSource
                 ?.notificationConfiguration?.notificationChannelName,
             overriddenDuration: _pipFlutterPlayerDataSource!.overriddenDuration,
@@ -510,17 +535,20 @@ class PipFlutterPlayerController {
           await videoPlayerController?.setFileDataSource(file,
               showNotification: _pipFlutterPlayerDataSource
                   ?.notificationConfiguration?.showNotification,
-              title: _pipFlutterPlayerDataSource?.notificationConfiguration?.title,
-              author:
-                  _pipFlutterPlayerDataSource?.notificationConfiguration?.author,
-              imageUrl:
-                  _pipFlutterPlayerDataSource?.notificationConfiguration?.imageUrl,
+              title:
+                  _pipFlutterPlayerDataSource?.notificationConfiguration?.title,
+              author: _pipFlutterPlayerDataSource
+                  ?.notificationConfiguration?.author,
+              imageUrl: _pipFlutterPlayerDataSource
+                  ?.notificationConfiguration?.imageUrl,
               notificationChannelName: _pipFlutterPlayerDataSource
                   ?.notificationConfiguration?.notificationChannelName,
-              overriddenDuration: _pipFlutterPlayerDataSource!.overriddenDuration,
+              overriddenDuration:
+                  _pipFlutterPlayerDataSource!.overriddenDuration,
               activityName: _pipFlutterPlayerDataSource
                   ?.notificationConfiguration?.activityName,
-              clearKey: _pipFlutterPlayerDataSource?.drmConfiguration?.clearKey);
+              clearKey:
+                  _pipFlutterPlayerDataSource?.drmConfiguration?.clearKey);
           _tempFiles.add(file);
         } else {
           throw ArgumentError("Couldn't create file from memory.");
@@ -556,7 +584,8 @@ class PipFlutterPlayerController {
         ?.videoEventStreamController.stream
         .listen(_handleVideoEvent);
 
-    final fullScreenByDefault = pipFlutterPlayerConfiguration.fullScreenByDefault;
+    final fullScreenByDefault =
+        pipFlutterPlayerConfiguration.fullScreenByDefault;
     if (pipFlutterPlayerConfiguration.autoPlay) {
       if (fullScreenByDefault && !isFullScreen) {
         enterFullScreen();
@@ -755,7 +784,8 @@ class PipFlutterPlayerController {
 
   ///Send player event to all listeners.
   void _postEvent(PipFlutterPlayerEvent pipFlutterPlayerEvent) {
-    for (final Function(PipFlutterPlayerEvent)? eventListener in _eventListeners) {
+    for (final Function(PipFlutterPlayerEvent)? eventListener
+        in _eventListeners) {
       if (eventListener != null) {
         eventListener(pipFlutterPlayerEvent);
       }
@@ -890,7 +920,8 @@ class PipFlutterPlayerController {
   void playNextVideo() {
     _nextVideoTime = 0;
     _nextVideoTimeStreamController.add(_nextVideoTime);
-    _postEvent(PipFlutterPlayerEvent(PipFlutterPlayerEventType.changedPlaylistItem));
+    _postEvent(
+        PipFlutterPlayerEvent(PipFlutterPlayerEventType.changedPlaylistItem));
     cancelNextVideoTimer();
   }
 
@@ -934,11 +965,12 @@ class PipFlutterPlayerController {
     if (_disposed) {
       return;
     }
-    _postEvent(
-        PipFlutterPlayerEvent(PipFlutterPlayerEventType.changedPlayerVisibility));
+    _postEvent(PipFlutterPlayerEvent(
+        PipFlutterPlayerEventType.changedPlayerVisibility));
 
     if (_isAutomaticPlayPauseHandled()) {
-      if (pipFlutterPlayerConfiguration.playerVisibilityChangedBehavior != null) {
+      if (pipFlutterPlayerConfiguration.playerVisibilityChangedBehavior !=
+          null) {
         pipFlutterPlayerConfiguration
             .playerVisibilityChangedBehavior!(visibilityFraction);
       } else {
@@ -979,8 +1011,9 @@ class PipFlutterPlayerController {
     // ignore: unnecessary_null_comparison
     if (locale != null) {
       final String languageCode = locale.languageCode;
-      translations = pipFlutterPlayerConfiguration.translations?.firstWhereOrNull(
-              (translations) => translations.languageCode == languageCode) ??
+      translations = pipFlutterPlayerConfiguration.translations
+              ?.firstWhereOrNull((translations) =>
+                  translations.languageCode == languageCode) ??
           _getDefaultTranslations(locale);
     } else {
       PipFlutterPlayerUtils.log("Locale is null. Couldn't setup translations.");
@@ -1047,7 +1080,8 @@ class PipFlutterPlayerController {
   ///Enable Picture in Picture (PiP) mode. [pipFlutterPlayerGlobalKey] is required
   ///to open PiP mode in iOS. When device is not supported, PiP mode won't be
   ///open.
-  Future<void>? enablePictureInPicture(GlobalKey pipFlutterPlayerGlobalKey) async {
+  Future<void>? enablePictureInPicture(
+      GlobalKey pipFlutterPlayerGlobalKey) async {
     if (videoPlayerController == null) {
       throw StateError("The data source has not been initialized");
     }
@@ -1145,16 +1179,19 @@ class PipFlutterPlayerController {
         );
         break;
       case VideoEventType.bufferingStart:
-        _postEvent(PipFlutterPlayerEvent(PipFlutterPlayerEventType.bufferingStart));
+        _postEvent(
+            PipFlutterPlayerEvent(PipFlutterPlayerEventType.bufferingStart));
         break;
       case VideoEventType.bufferingUpdate:
-        _postEvent(PipFlutterPlayerEvent(PipFlutterPlayerEventType.bufferingUpdate,
+        _postEvent(PipFlutterPlayerEvent(
+            PipFlutterPlayerEventType.bufferingUpdate,
             parameters: <String, dynamic>{
               _bufferedParameter: event.buffered,
             }));
         break;
       case VideoEventType.bufferingEnd:
-        _postEvent(PipFlutterPlayerEvent(PipFlutterPlayerEventType.bufferingEnd));
+        _postEvent(
+            PipFlutterPlayerEvent(PipFlutterPlayerEventType.bufferingEnd));
         break;
       default:
 
@@ -1230,7 +1267,8 @@ class PipFlutterPlayerController {
   ///On iOS, the whole file will be downloaded, since [maxCacheFileSize] is
   ///currently not supported on iOS. On iOS, the video format must be in this
   ///list: https://github.com/sendyhalim/Swime/blob/master/Sources/MimeType.swift
-  Future<void> preCache(PipFlutterPlayerDataSource pipFlutterPlayerDataSource) async {
+  Future<void> preCache(
+      PipFlutterPlayerDataSource pipFlutterPlayerDataSource) async {
     final cacheConfig = pipFlutterPlayerDataSource.cacheConfiguration ??
         const PipFlutterPlayerCacheConfiguration(useCache: true);
 

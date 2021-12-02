@@ -97,7 +97,8 @@ class PipFlutterPlayerDataSource {
     this.videoExtension,
     this.drmConfiguration,
     this.placeholder,
-    this.bufferingConfiguration = const PipFlutterPlayerBufferingConfiguration(),
+    this.bufferingConfiguration =
+        const PipFlutterPlayerBufferingConfiguration(),
   }) : assert(
             (type == PipFlutterPlayerDataSourceType.network ||
                     type == PipFlutterPlayerDataSourceType.file) ||
@@ -118,7 +119,8 @@ class PipFlutterPlayerDataSource {
     Map<String, String>? qualities,
     PipFlutterPlayerCacheConfiguration? cacheConfiguration,
     PipFlutterPlayerNotificationConfiguration notificationConfiguration =
-        const PipFlutterPlayerNotificationConfiguration(showNotification: false),
+        const PipFlutterPlayerNotificationConfiguration(
+            showNotification: false),
     Duration? overriddenDuration,
     PipFlutterPlayerVideoFormat? videoFormat,
     PipFlutterPlayerDrmConfiguration? drmConfiguration,
@@ -168,7 +170,8 @@ class PipFlutterPlayerDataSource {
       resolutions: qualities,
       cacheConfiguration: cacheConfiguration,
       notificationConfiguration: notificationConfiguration =
-          const PipFlutterPlayerNotificationConfiguration(showNotification: false),
+          const PipFlutterPlayerNotificationConfiguration(
+              showNotification: false),
       overriddenDuration: overriddenDuration,
       placeholder: placeholder,
     );
@@ -199,7 +202,8 @@ class PipFlutterPlayerDataSource {
       resolutions: qualities,
       cacheConfiguration: cacheConfiguration,
       notificationConfiguration: notificationConfiguration =
-          const PipFlutterPlayerNotificationConfiguration(showNotification: false),
+          const PipFlutterPlayerNotificationConfiguration(
+              showNotification: false),
       overriddenDuration: overriddenDuration,
       placeholder: placeholder,
     );
@@ -218,7 +222,8 @@ class PipFlutterPlayerDataSource {
     Map<String, String>? resolutions,
     PipFlutterPlayerCacheConfiguration? cacheConfiguration,
     PipFlutterPlayerNotificationConfiguration? notificationConfiguration =
-        const PipFlutterPlayerNotificationConfiguration(showNotification: false),
+        const PipFlutterPlayerNotificationConfiguration(
+            showNotification: false),
     Duration? overriddenDuration,
     PipFlutterPlayerVideoFormat? videoFormat,
     String? videoExtension,

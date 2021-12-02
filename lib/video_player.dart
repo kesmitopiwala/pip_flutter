@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:meta/meta.dart';
 import 'package:pip_flutter/pipflutter_player_buffering_configuration.dart';
 import 'package:pip_flutter/video_player_platform_interface.dart';
 
@@ -168,7 +167,8 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
 
   /// Constructs a [VideoPlayerController] and creates video controller on platform side.
   VideoPlayerController({
-    this.bufferingConfiguration = const PipFlutterPlayerBufferingConfiguration(),
+    this.bufferingConfiguration =
+        const PipFlutterPlayerBufferingConfiguration(),
     bool autoCreate = true,
   }) : super(VideoPlayerValue(duration: null)) {
     if (autoCreate) {

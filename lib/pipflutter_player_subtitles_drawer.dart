@@ -9,7 +9,8 @@ import 'package:pip_flutter/video_player.dart';
 class PipFlutterPlayerSubtitlesDrawer extends StatefulWidget {
   final List<PipFlutterPlayerSubtitle> subtitles;
   final PipFlutterPlayerController pipFlutterPlayerController;
-  final PipFlutterPlayerSubtitlesConfiguration? pipFlutterPlayerSubtitlesConfiguration;
+  final PipFlutterPlayerSubtitlesConfiguration?
+      pipFlutterPlayerSubtitlesConfiguration;
   final Stream<bool> playerVisibilityStream;
 
   const PipFlutterPlayerSubtitlesDrawer({

@@ -1,11 +1,11 @@
 name: pip_flutter
-description: A new Flutter project.
+description: A new Flutter Picture in Picture Package for android.When app is not running in foregorund that time also app not kill.
 version: 0.0.1
-homepage:
+homepage: https://github.com/kesmitopiwala/pip_flutter/blob/master/example/lib/main.dart
 
 environment:
-  sdk: ">=2.15.0-211.0.dev <3.0.0"
-  flutter: ">=2.5.0"
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.20.0"
 
 dependencies:
   flutter:
@@ -16,6 +16,7 @@ dependencies:
   pedantic: ^1.11.1
   flutter_widget_from_html_core: ^0.7.0
   path_provider: ^2.0.5
+  collection: ^1.15.0
 
 dev_dependencies:
   flutter_test:
@@ -35,14 +36,6 @@ flutter:
     platforms:
       android:
         package: com.example.pip_flutter
-        pluginClass: PipFlutterPlugin
-      ios:
-        pluginClass: PipFlutterPlugin
-      linux:
-        pluginClass: PipFlutterPlugin
-      macos:
-        pluginClass: PipFlutterPlugin
-      windows:
         pluginClass: PipFlutterPlugin
 
   # To add assets to your plugin package, add an assets section, like this:

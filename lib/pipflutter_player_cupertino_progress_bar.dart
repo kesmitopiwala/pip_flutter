@@ -69,7 +69,9 @@ class _VideoProgressBarState
   @override
   Widget build(BuildContext context) {
     final bool enableProgressBarDrag = pipFlutterPlayerController!
-        .pipFlutterPlayerConfiguration.controlsConfiguration.enableProgressBarDrag;
+        .pipFlutterPlayerConfiguration
+        .controlsConfiguration
+        .enableProgressBarDrag;
     return GestureDetector(
       onHorizontalDragStart: (DragStartDetails details) {
         if (!controller!.value.initialized || !enableProgressBarDrag) {

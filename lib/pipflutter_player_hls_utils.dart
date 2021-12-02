@@ -1,5 +1,3 @@
-
-
 import 'package:pip_flutter/hls_master_playlist.dart';
 import 'package:pip_flutter/hls_media_playlist.dart';
 import 'package:pip_flutter/hls_playlist_parser.dart';
@@ -94,8 +92,8 @@ class PipFlutterPlayerHlsUtils {
       Rendition rendition) async {
     try {
       final HlsPlaylistParser _hlsPlaylistParser = HlsPlaylistParser.create();
-      final subtitleData =
-          await PipFlutterPlayerAsmsUtils.getDataFromUrl(rendition.url.toString());
+      final subtitleData = await PipFlutterPlayerAsmsUtils.getDataFromUrl(
+          rendition.url.toString());
       if (subtitleData == null) {
         return null;
       }
@@ -158,7 +156,8 @@ class PipFlutterPlayerHlsUtils {
           segments: asmsSegments,
           isDefault: isDefault);
     } catch (exception) {
-      PipFlutterPlayerUtils.log("Failed to process subtitles playlist: $exception");
+      PipFlutterPlayerUtils.log(
+          "Failed to process subtitles playlist: $exception");
       return null;
     }
   }

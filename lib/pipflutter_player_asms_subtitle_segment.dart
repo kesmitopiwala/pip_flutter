@@ -11,5 +11,6 @@ class PipFlutterPlayerAsmsSubtitleSegment {
   ///Real url of the subtitles (with all domains and paths).
   final String realUrl;
 
-  PipFlutterPlayerAsmsSubtitleSegment(this.startTime, this.endTime, this.realUrl);
+  PipFlutterPlayerAsmsSubtitleSegment(
+      this.startTime, this.endTime, this.realUrl);
 }

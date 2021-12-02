@@ -17,7 +17,8 @@ import 'package:wakelock/wakelock.dart';
 
 ///Widget which uses provided controller to render video player.
 class PipFlutterPlayer extends StatefulWidget {
-  const PipFlutterPlayer({Key? key, required this.controller}) : super(key: key);
+  const PipFlutterPlayer({Key? key, required this.controller})
+      : super(key: key);
 
   factory PipFlutterPlayer.network(
     String url, {
@@ -25,9 +26,10 @@ class PipFlutterPlayer extends StatefulWidget {
   }) =>
       PipFlutterPlayer(
         controller: PipFlutterPlayerController(
-          pipFlutterPlayerConfiguration ?? const PipFlutterPlayerConfiguration(),
-          pipFlutterPlayerDataSource:
-              PipFlutterPlayerDataSource(PipFlutterPlayerDataSourceType.network, url),
+          pipFlutterPlayerConfiguration ??
+              const PipFlutterPlayerConfiguration(),
+          pipFlutterPlayerDataSource: PipFlutterPlayerDataSource(
+              PipFlutterPlayerDataSourceType.network, url),
         ),
       );
 
@@ -37,9 +39,10 @@ class PipFlutterPlayer extends StatefulWidget {
   }) =>
       PipFlutterPlayer(
         controller: PipFlutterPlayerController(
-          pipFlutterPlayerConfiguration ?? const PipFlutterPlayerConfiguration(),
-          pipFlutterPlayerDataSource:
-              PipFlutterPlayerDataSource(PipFlutterPlayerDataSourceType.file, url),
+          pipFlutterPlayerConfiguration ??
+              const PipFlutterPlayerConfiguration(),
+          pipFlutterPlayerDataSource: PipFlutterPlayerDataSource(
+              PipFlutterPlayerDataSourceType.file, url),
         ),
       );
 
@@ -112,7 +115,8 @@ class _PipFlutterPlayerState extends State<PipFlutterPlayer>
       Wakelock.disable();
       _navigatorState.maybePop();
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-          overlays: _pipFlutterPlayerConfiguration.systemOverlaysAfterFullScreen);
+          overlays:
+              _pipFlutterPlayerConfiguration.systemOverlaysAfterFullScreen);
       SystemChrome.setPreferredOrientations(
           _pipFlutterPlayerConfiguration.deviceOrientationsAfterFullScreen);
     }
@@ -154,14 +158,14 @@ class _PipFlutterPlayerState extends State<PipFlutterPlayer>
     final controller = widget.controller;
     if (controller.isFullScreen && !_isFullScreen) {
       _isFullScreen = true;
-      controller
-          .postEvent(PipFlutterPlayerEvent(PipFlutterPlayerEventType.openFullscreen));
+      controller.postEvent(
+          PipFlutterPlayerEvent(PipFlutterPlayerEventType.openFullscreen));
       await _pushFullScreenWidget(context);
     } else if (_isFullScreen) {
       Navigator.of(context, rootNavigator: true).pop();
       _isFullScreen = false;
-      controller
-          .postEvent(PipFlutterPlayerEvent(PipFlutterPlayerEventType.hideFullscreen));
+      controller.postEvent(
+          PipFlutterPlayerEvent(PipFlutterPlayerEventType.hideFullscreen));
     }
   }
 

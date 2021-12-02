@@ -1,6 +1,3 @@
-
-
-
 import 'package:pip_flutter/pipflutter_player_asms_subtitle_segment.dart';
 
 ///Representation of HLS / DASH subtitle element.

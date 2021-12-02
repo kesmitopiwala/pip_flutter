@@ -50,11 +50,12 @@ class _PipFlutterPlayerCupertinoControlsState
   VideoPlayerValue? get latestValue => _latestValue;
 
   @override
-  PipFlutterPlayerController? get pipFlutterPlayerController => _pipFlutterPlayerController;
+  PipFlutterPlayerController? get pipFlutterPlayerController =>
+      _pipFlutterPlayerController;
 
   @override
-  PipFlutterPlayerControlsConfiguration get pipFlutterPlayerControlsConfiguration =>
-      _controlsConfiguration;
+  PipFlutterPlayerControlsConfiguration
+      get pipFlutterPlayerControlsConfiguration => _controlsConfiguration;
 
   @override
   Widget build(BuildContext context) {
@@ -113,14 +114,18 @@ class _PipFlutterPlayerCupertinoControlsState
       },
       onDoubleTap: () {
         if (PipFlutterPlayerMultipleGestureDetector.of(context) != null) {
-          PipFlutterPlayerMultipleGestureDetector.of(context)!.onDoubleTap?.call();
+          PipFlutterPlayerMultipleGestureDetector.of(context)!
+              .onDoubleTap
+              ?.call();
         }
         cancelAndRestartTimer();
         _onPlayPause();
       },
       onLongPress: () {
         if (PipFlutterPlayerMultipleGestureDetector.of(context) != null) {
-          PipFlutterPlayerMultipleGestureDetector.of(context)!.onLongPress?.call();
+          PipFlutterPlayerMultipleGestureDetector.of(context)!
+              .onLongPress
+              ?.call();
         }
       },
       child: AbsorbPointer(
@@ -663,7 +668,8 @@ class _PipFlutterPlayerCupertinoControlsState
       cancelAndRestartTimer();
 
       if (!_controller!.value.initialized) {
-        if (_pipFlutterPlayerController!.pipFlutterPlayerDataSource?.liveStream ==
+        if (_pipFlutterPlayerController!
+                .pipFlutterPlayerDataSource?.liveStream ==
             true) {
           _pipFlutterPlayerController!.play();
           _pipFlutterPlayerController!.cancelNextVideoTimer();
