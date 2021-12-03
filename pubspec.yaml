@@ -1,5 +1,5 @@
 name: pip_flutter
-description: A new Flutter Picture in Picture Package for android.When app is not running in foregorund that time also app not kill.
+description: A new Flutter Picture in Picture Package for android.When app is running in foregorund that time also app not kill.
 version: 0.0.1
 homepage: https://github.com/kesmitopiwala/pip_flutter/blob/master/example/lib/main.dart
 
@@ -14,7 +14,7 @@ dependencies:
   visibility_detector: ^0.2.0
   xml: ^5.3.0
   pedantic: ^1.11.1
-  flutter_widget_from_html_core: ^0.7.0
+  flutter_widget_from_html_core: ^0.8.2
   path_provider: ^2.0.5
   collection: ^1.15.0
 
@@ -39,8 +39,8 @@ flutter:
         pluginClass: PipFlutterPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+   - assets/
   #   - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see
