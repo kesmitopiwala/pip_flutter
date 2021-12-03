@@ -20,8 +20,6 @@ A Flutter plugin for Android for make video in picture in picture mode.
 
 A flutter package pip flutter which will help to put your video in pip mode.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) 
-
 ## Features 💚
 
 - Put your video in Picture in Picture mode.
