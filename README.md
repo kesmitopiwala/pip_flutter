@@ -53,7 +53,7 @@ app is not in background that time app not kill and running in foregorund and al
            android:name=".PipFlutterPlayerService"
            android:stopWithTask="false" />
 ```
-##  Android
+##  IOS
 
 In Xcode of your project set ios deployment info 11.0 and set in below code in your Info.plist file.
 ```
