@@ -6,7 +6,7 @@ A Flutter plugin for Android for make video in picture in picture mode.
 
 <br>
 
-| Picture in Picture Mode Flutter                                                                                                                                                                                           |
+# Picture in Picture Mode Flutter
 <br>
 
 <br>
