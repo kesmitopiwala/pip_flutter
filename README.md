@@ -37,8 +37,7 @@ First, add `pip_flutter` as a [dependency in your pubspec.yaml file](https://flu
 Add below permission in your AndroidManifest.xml file ,also specified picture in picture mode in your activity tag and add foreground service for when 
 app is not in background that time app not kill and running in foregorund and also add update code of MainActivity.kt and add PipFlutterPlayerService.
 
-<br>
-``` 
+```
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     
@@ -58,6 +57,7 @@ app is not in background that time app not kill and running in foregorund and al
 ```
 
 ## How to use
+
 - PipFlutterPlayerConfiguration : Put this class for your video configuration.
 ```Dart
 PipFlutterPlayerConfiguration pipFlutterPlayerConfiguration =
@@ -67,7 +67,7 @@ const PipFlutterPlayerConfiguration(
 );
 ```
 
-- PipFlutterPlayerDataSource dataSource : Put this class for declare your video type url
+- PipFlutterPlayerDataSource : Put this class for declare your video type url
 and url.
 ```Dart
 PipFlutterPlayerDataSource dataSource = PipFlutterPlayerDataSource(
