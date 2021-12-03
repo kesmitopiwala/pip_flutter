@@ -6,9 +6,7 @@ A Flutter plugin for Android for make video in picture in picture mode.
 
 <br>
 
-| Picture in Picture Mode Flutter                                                                                     |                                                                                                       |
-| -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-|
+| Picture in Picture Mode Flutter                                                                                                                                                                                           |
 <br>
 
 <br>
@@ -27,18 +25,19 @@ A flutter package pip flutter which will help to put your video in pip mode.
 ## Features 💚
 
 - Put your video in Picture in Picture mode.
-- Also mute sound and play and pause of video.
+- Also mute sound and play and pause the video.
 - Make video in full screen mode,set play back speed of video
 
 ## Installation
 
 First, add `pip_flutter` as a [dependency in your pubspec.yaml file](https://flutter.dev/using-packages/).
 
-###Android
+##  Android
 
--Add below permission in your AndroidManifest.xml file ,also specified picture in picture mode in your activity tag and add foreground service for when 
+Add below permission in your AndroidManifest.xml file ,also specified picture in picture mode in your activity tag and add foreground service for when 
 app is not in background that time app not kill and running in foregorund and also add update code of MainActivity.kt and add PipFlutterPlayerService.
 
+<br>
 ``` 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
