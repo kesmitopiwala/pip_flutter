@@ -1,6 +1,6 @@
 # pip_flutter
 
-A Flutter plugin for Android for make video in picture in picture mode.
+A Flutter plugin for Android  and ios for make video in picture in picture mode.
 
 ![](https://github.com/kesmitopiwala/pip_flutter/blob/master/assets/pictureinpicturevideo.gif)
 
@@ -52,6 +52,26 @@ app is not in background that time app not kill and running in foregorund and al
     <service
            android:name=".PipFlutterPlayerService"
            android:stopWithTask="false" />
+```
+##  Android
+
+In Xcode of your project set ios deployment info 11.0 and set in below code in your Info.plist file.
+```
+<key>NSAppTransportSecurity</key>
+<dict>
+<key>NSAllowsArbitraryLoads</key>
+<true/>
+</dict>
+<key>NSBonjourServices</key>
+<array>
+<string>_dartobservatory._tcp</string>
+</array>
+<key>UIBackgroundModes</key>
+<array>
+<string>audio</string>
+<string>processing</string>
+<string>remote-notification</string>
+</array>
 ```
 
 ## How to use
