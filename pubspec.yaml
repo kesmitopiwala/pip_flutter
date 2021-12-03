@@ -1,6 +1,6 @@
 name: pip_flutter
 description: A new Flutter Picture in Picture Package for android.When app is running in foregorund that time also app not kill.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/kesmitopiwala/pip_flutter/blob/master/example/lib/main.dart
 
 environment:
