@@ -360,7 +360,7 @@ class HlsPlaylistParser {
     }
 
     // ignore: always_specify_types
-    mediaTags.forEach((line) {
+    for (var line in mediaTags) {
       final String? groupId = _parseStringAttr(
           source: line,
           pattern: regexpGroupId,
@@ -505,7 +505,7 @@ class HlsPlaylistParser {
               accessibilityChannel = int.parse(instreamId.substring(7));
             }
             muxedCaptionFormats ??= []; // ignore: always_specify_types
-            muxedCaptionFormats!.add(Format(
+            muxedCaptionFormats.add(Format(
               id: formatId,
               label: name,
               sampleMimeType: mimeType,
@@ -519,7 +519,7 @@ class HlsPlaylistParser {
         default:
           break;
       }
-    });
+    }
 
     if (noClosedCaptions) {
       muxedCaptionFormats = [];

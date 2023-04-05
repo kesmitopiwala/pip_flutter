@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: InkWell(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => PictureInPicturePage()));
+                builder: (context) => const PictureInPicturePage()));
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
@@ -51,10 +51,15 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Container(
                 padding: const EdgeInsets.all(8.0),
                 margin: const EdgeInsets.all(8.0),
-                decoration: BoxDecoration(color: Colors.pink,borderRadius: BorderRadius.circular(12.0)),
+                decoration: BoxDecoration(
+                    color: Colors.pink,
+                    borderRadius: BorderRadius.circular(12.0)),
                 child: const Text(
                   'Picture in Picture Mode',
-                    style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16),
                 ),
               ),
             ),
@@ -66,6 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class PictureInPicturePage extends StatefulWidget {
+  const PictureInPicturePage({Key? key}) : super(key: key);
+
   @override
   _PictureInPicturePageState createState() => _PictureInPicturePageState();
 }
@@ -98,9 +105,14 @@ class _PictureInPicturePageState extends State<PictureInPicturePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Picture in Picture player"),
-        leading: IconButton(onPressed: (){
-          Navigator.of(context).pop();
-        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+            )),
       ),
       body: Column(
         children: [
@@ -125,9 +137,18 @@ class _PictureInPicturePageState extends State<PictureInPicturePage> {
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.4,
                     padding: const EdgeInsets.all(8.0),
-                      margin: const EdgeInsets.all(8.0),
-                      decoration: BoxDecoration(color: Colors.pink,borderRadius: BorderRadius.circular(12.0)),
-                      child: const Center(child: Text("Show PiP",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),))),
+                    margin: const EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                        color: Colors.pink,
+                        borderRadius: BorderRadius.circular(12.0)),
+                    child: const Center(
+                      child: Text(
+                        "Show PiP",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
                   onTap: () {
                     pipFlutterPlayerController
                         .enablePictureInPicture(pipFlutterPlayerKey);
@@ -135,11 +156,20 @@ class _PictureInPicturePageState extends State<PictureInPicturePage> {
                 ),
                 InkWell(
                   child: Container(
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      padding: const EdgeInsets.all(8.0),
-                      margin: const EdgeInsets.all(8.0),
-                      decoration: BoxDecoration(color: Colors.pink,borderRadius: BorderRadius.circular(12.0)),
-                      child: Center(child: const Text("Disable PiP",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),))),
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    padding: const EdgeInsets.all(8.0),
+                    margin: const EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                        color: Colors.pink,
+                        borderRadius: BorderRadius.circular(12.0)),
+                    child: const Center(
+                      child: Text(
+                        "Disable PiP",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
                   onTap: () async {
                     pipFlutterPlayerController.disablePictureInPicture();
                   },

@@ -61,14 +61,14 @@ class HlsMasterPlaylist extends HlsPlaylist {
   static List<Uri?> _getMediaPlaylistUrls(
       List<Variant> variants, List<List<Rendition>> renditionList) {
     final uriList = <Uri?>[];
-    variants.forEach((element) {
+    for (var element in variants) {
       uriList.add(element.url);
-    });
-    renditionList.forEach((element) {
+    }
+    for (var element in renditionList) {
       for (final value in element) {
         uriList.add(value.url);
       }
-    });
+    }
     return uriList;
   }
 }

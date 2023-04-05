@@ -337,7 +337,7 @@ class PipFlutterPlayerController {
       if (pipFlutterPlayerDataSource?.useAsmsSubtitles == true) {
         final List<PipFlutterPlayerAsmsSubtitle> asmsSubtitles =
             _response.subtitles ?? [];
-        asmsSubtitles.forEach((PipFlutterPlayerAsmsSubtitle asmsSubtitle) {
+        for (var asmsSubtitle in asmsSubtitles) {
           _pipFlutterPlayerSubtitlesSourceList.add(
             PipFlutterPlayerSubtitlesSource(
               type: PipFlutterPlayerSubtitlesSourceType.network,
@@ -349,7 +349,7 @@ class PipFlutterPlayerController {
               selectedByDefault: asmsSubtitle.isDefault,
             ),
           );
-        });
+        }
       }
 
       ///Load audio tracks
@@ -425,7 +425,7 @@ class PipFlutterPlayerController {
                 PipFlutterPlayerSubtitlesSource(
           type: _pipFlutterPlayerSubtitlesSource!.type,
           headers: _pipFlutterPlayerSubtitlesSource!.headers,
-          urls: segmentsToLoad as List<String>,
+          urls: segmentsToLoad,
         ));
 
         ///Additional check if current source of subtitles is same as source
@@ -1290,7 +1290,7 @@ class PipFlutterPlayerController {
   ///cache started for given [pipFlutterPlayerDataSource] then it will be ignored.
   Future<void> stopPreCache(
       PipFlutterPlayerDataSource pipFlutterPlayerDataSource) async {
-    return VideoPlayerController?.stopPreCache(pipFlutterPlayerDataSource.url,
+    return VideoPlayerController.stopPreCache(pipFlutterPlayerDataSource.url,
         pipFlutterPlayerDataSource.cacheConfiguration?.key);
   }
 
@@ -1324,7 +1324,9 @@ class PipFlutterPlayerController {
       _controllerEventStreamController.close();
 
       ///Delete files async
-      _tempFiles.forEach((file) => file.delete());
+      for (var file in _tempFiles) {
+        file.delete();
+      }
     }
   }
 }
