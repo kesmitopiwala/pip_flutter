@@ -89,7 +89,7 @@ class PipFlutterPlayerHlsUtils {
   static Future<PipFlutterPlayerAsmsSubtitle?> _parseSubtitlesPlaylist(
       Rendition rendition) async {
     try {
-      final HlsPlaylistParser _hlsPlaylistParser = HlsPlaylistParser.create();
+      final HlsPlaylistParser hlsPlaylistParser = HlsPlaylistParser.create();
       final subtitleData = await PipFlutterPlayerAsmsUtils.getDataFromUrl(
           rendition.url.toString());
       if (subtitleData == null) {
@@ -97,7 +97,7 @@ class PipFlutterPlayerHlsUtils {
       }
 
       final parsedSubtitle =
-          await _hlsPlaylistParser.parseString(rendition.url, subtitleData);
+          await hlsPlaylistParser.parseString(rendition.url, subtitleData);
       final hlsMediaPlaylist = parsedSubtitle as HlsMediaPlaylist;
       final hlsSubtitlesUrls = <String>[];
 

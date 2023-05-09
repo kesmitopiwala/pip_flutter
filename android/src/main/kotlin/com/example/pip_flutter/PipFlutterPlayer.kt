@@ -314,7 +314,6 @@ internal class PipFlutterPlayer(
         playerNotificationManager!!.setUseStopAction(false)
         val mediaSession = setupMediaSession(context, false)
         playerNotificationManager!!.setMediaSessionToken(mediaSession.sessionToken)
-        playerNotificationManager!!.setControlDispatcher(setupControlDispatcher())
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             refreshHandler = Handler(Looper.getMainLooper())
             refreshRunnable = Runnable {
@@ -345,80 +344,6 @@ internal class PipFlutterPlayer(
         }
         exoPlayer!!.addListener(exoPlayerEventListener!!)
         exoPlayer.seekTo(0)
-    }
-
-    private fun setupControlDispatcher(): ControlDispatcher {
-        return object : ControlDispatcher {
-            override fun dispatchPrepare(player: Player): Boolean {
-                return false
-            }
-
-            override fun dispatchSetPlayWhenReady(player: Player, playWhenReady: Boolean): Boolean {
-                if (player.playWhenReady) {
-                    sendEvent("pause")
-                } else {
-                    sendEvent("play")
-                }
-                return true
-            }
-
-            override fun dispatchSeekTo(
-                player: Player,
-                windowIndex: Int,
-                positionMs: Long
-            ): Boolean {
-                sendSeekToEvent(positionMs)
-                return true
-            }
-
-            override fun dispatchPrevious(player: Player): Boolean {
-                return false
-            }
-
-            override fun dispatchNext(player: Player): Boolean {
-                return false
-            }
-
-            override fun dispatchRewind(player: Player): Boolean {
-                sendSeekToEvent(player.currentPosition - 5000)
-                return false
-            }
-
-            override fun dispatchFastForward(player: Player): Boolean {
-                sendSeekToEvent(player.currentPosition + 5000)
-                return true
-            }
-
-            override fun dispatchSetRepeatMode(player: Player, repeatMode: Int): Boolean {
-                return false
-            }
-
-            override fun dispatchSetShuffleModeEnabled(
-                player: Player,
-                shuffleModeEnabled: Boolean
-            ): Boolean {
-                return false
-            }
-
-            override fun dispatchStop(player: Player, reset: Boolean): Boolean {
-                return false
-            }
-
-            override fun dispatchSetPlaybackParameters(
-                player: Player,
-                playbackParameters: PlaybackParameters
-            ): Boolean {
-                return false
-            }
-
-            override fun isRewindEnabled(): Boolean {
-                return true
-            }
-
-            override fun isFastForwardEnabled(): Boolean {
-                return true
-            }
-        }
     }
 
     fun disposeRemoteNotifications() {
@@ -686,9 +611,6 @@ internal class PipFlutterPlayer(
         })
         mediaSession.isActive = true
         val mediaSessionConnector = MediaSessionConnector(mediaSession)
-        if (setupControlDispatcher) {
-            mediaSessionConnector.setControlDispatcher(setupControlDispatcher())
-        }
         mediaSessionConnector.setPlayer(exoPlayer)
         this.mediaSession = mediaSession
         return mediaSession

@@ -324,19 +324,19 @@ class PipFlutterPlayerController {
       _getHeaders(),
     );
     if (data != null) {
-      final PipFlutterPlayerAsmsDataHolder _response =
+      final PipFlutterPlayerAsmsDataHolder response =
           await PipFlutterPlayerAsmsUtils.parse(
               data, pipFlutterPlayerDataSource!.url);
 
       /// Load tracks
       if (_pipFlutterPlayerDataSource?.useAsmsTracks == true) {
-        _pipFlutterPlayerAsmsTracks = _response.tracks ?? [];
+        _pipFlutterPlayerAsmsTracks = response.tracks ?? [];
       }
 
       /// Load subtitles
       if (pipFlutterPlayerDataSource?.useAsmsSubtitles == true) {
         final List<PipFlutterPlayerAsmsSubtitle> asmsSubtitles =
-            _response.subtitles ?? [];
+            response.subtitles ?? [];
         for (var asmsSubtitle in asmsSubtitles) {
           _pipFlutterPlayerSubtitlesSourceList.add(
             PipFlutterPlayerSubtitlesSource(
@@ -355,7 +355,7 @@ class PipFlutterPlayerController {
       ///Load audio tracks
       if (pipFlutterPlayerDataSource?.useAsmsAudioTracks == true &&
           _isDataSourceAsms(pipFlutterPlayerDataSource!)) {
-        _pipFlutterPlayerAsmsAudioTracks = _response.audios ?? [];
+        _pipFlutterPlayerAsmsAudioTracks = response.audios ?? [];
         if (_pipFlutterPlayerAsmsAudioTracks?.isNotEmpty == true) {
           setAudioTrack(_pipFlutterPlayerAsmsAudioTracks!.first);
         }
@@ -895,9 +895,9 @@ class PipFlutterPlayerController {
       }
 
       _nextVideoTimer =
-          Timer.periodic(const Duration(milliseconds: 1000), (_timer) async {
+          Timer.periodic(const Duration(milliseconds: 1000), (timer) async {
         if (_nextVideoTime == 1) {
-          _timer.cancel();
+          timer.cancel();
           _nextVideoTimer = null;
         }
         if (_nextVideoTime != null) {

@@ -17,7 +17,7 @@ PODS:
     - PINCache/Core
   - PINCache/Core (3.0.3):
     - PINOperation (~> 1.2.1)
-  - PINOperation (1.2.1)
+  - PINOperation (1.2.2)
   - pip_flutter (0.0.3):
     - Cache (~> 6.0.0)
     - Flutter
@@ -56,7 +56,7 @@ SPEC CHECKSUMS:
   HLSCachingReverseProxyServer: 59935e1e0244ad7f3375d75b5ef46e8eb26ab181
   path_provider_foundation: c68054786f1b4f3343858c1e1d0caaded73f0be9
   PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
-  PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
+  PINOperation: daa34d4aa1d8449089be7d405b9d974abc4724c6
   pip_flutter: ab714aa0773b07b3e8c41a5ab314c8e22fd53c25
   wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f
 
