@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pip_flutter/pipflutter_player_controller.dart';
@@ -243,8 +242,8 @@ class PipFlutterPlayerControlsConfiguration {
   ///Setup PipFlutterPlayerControlsConfiguration based on Theme options.
   factory PipFlutterPlayerControlsConfiguration.theme(ThemeData theme) {
     return PipFlutterPlayerControlsConfiguration(
-      textColor: theme.textTheme.bodyText1?.color ?? Colors.white,
-      iconsColor: theme.textTheme.button?.color ?? Colors.white,
+      textColor: theme.textTheme.bodyLarge?.color ?? Colors.white,
+      iconsColor: theme.textTheme.labelLarge?.color ?? Colors.white,
     );
   }
 }

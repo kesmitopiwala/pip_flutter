@@ -310,7 +310,7 @@ class _PipFlutterPlayerVideoFitWidgetState
     if (_initialized && _started) {
       return Center(
         child: ClipRect(
-          child: Container(
+          child: SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: FittedBox(

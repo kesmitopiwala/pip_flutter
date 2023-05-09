@@ -151,11 +151,11 @@ class _PipFlutterPlayerCupertinoControlsState
 
   @override
   void didChangeDependencies() {
-    final _oldController = _pipFlutterPlayerController;
+    final oldController = _pipFlutterPlayerController;
     _pipFlutterPlayerController = PipFlutterPlayerController.of(context);
     _controller = _pipFlutterPlayerController!.videoPlayerController;
 
-    if (_oldController != _pipFlutterPlayerController) {
+    if (oldController != _pipFlutterPlayerController) {
       _dispose();
       _initialize();
     }

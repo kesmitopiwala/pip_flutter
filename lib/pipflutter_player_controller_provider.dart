@@ -12,6 +12,6 @@ class PipFlutterPlayerControllerProvider extends InheritedWidget {
   final PipFlutterPlayerController controller;
 
   @override
-  bool updateShouldNotify(PipFlutterPlayerControllerProvider old) =>
-      controller != old.controller;
+  bool updateShouldNotify(PipFlutterPlayerControllerProvider oldWidget) =>
+      controller != oldWidget.controller;
 }

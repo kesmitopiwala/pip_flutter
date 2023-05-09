@@ -42,12 +42,10 @@ class PipFlutterPlayerHlsUtils {
       final parsedPlaylist = await HlsPlaylistParser.create()
           .parseString(Uri.parse(masterPlaylistUrl), data);
       if (parsedPlaylist is HlsMasterPlaylist) {
-        parsedPlaylist.variants.forEach(
-          (variant) {
-            tracks.add(PipFlutterPlayerAsmsTrack('', variant.format.width,
-                variant.format.height, variant.format.bitrate, 0, '', ''));
-          },
-        );
+        for (var variant in parsedPlaylist.variants) {
+          tracks.add(PipFlutterPlayerAsmsTrack('', variant.format.width,
+              variant.format.height, variant.format.bitrate, 0, '', ''));
+        }
       }
 
       if (tracks.isNotEmpty) {
@@ -91,7 +89,7 @@ class PipFlutterPlayerHlsUtils {
   static Future<PipFlutterPlayerAsmsSubtitle?> _parseSubtitlesPlaylist(
       Rendition rendition) async {
     try {
-      final HlsPlaylistParser _hlsPlaylistParser = HlsPlaylistParser.create();
+      final HlsPlaylistParser hlsPlaylistParser = HlsPlaylistParser.create();
       final subtitleData = await PipFlutterPlayerAsmsUtils.getDataFromUrl(
           rendition.url.toString());
       if (subtitleData == null) {
@@ -99,7 +97,7 @@ class PipFlutterPlayerHlsUtils {
       }
 
       final parsedSubtitle =
-          await _hlsPlaylistParser.parseString(rendition.url, subtitleData);
+          await hlsPlaylistParser.parseString(rendition.url, subtitleData);
       final hlsMediaPlaylist = parsedSubtitle as HlsMediaPlaylist;
       final hlsSubtitlesUrls = <String>[];
 
